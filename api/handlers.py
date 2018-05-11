@@ -52,7 +52,6 @@ class TodosHandler(object):
 
         cur.execute("SELECT * FROM public.todo WHERE id='{}' AND title='{}'".format(id, body['title']))
         todo = cur.fetchall()
-        print(todo)
         response = dict();
 
         if(len(todo) < 1):

@@ -4,11 +4,9 @@ import json
 
 from falcon import testing
 
-
 class MyTestCase(testing.TestCase):
     def setUp(self, app):
         super(MyTestCase, self).setUp()
-        # function called `create()` to initialize and
         # return a `falcon.API` instance.
         print("*********** Unit Testing **************+")
         self.app = app

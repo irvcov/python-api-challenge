@@ -29,7 +29,9 @@ class TodosHandler(object):
         resp.status = falcon.HTTP_200
 
     def on_post(self, req, resp):
+        print("On Post")
         body = json.loads(req.req_body)
+        print(body)
         conn = psycopg2.connect(host=os.environ["DB_HOST"],
                                 dbname=os.environ["DB_NAME"],
                                 user=os.environ["DB_USER"],
@@ -37,6 +39,22 @@ class TodosHandler(object):
         cur = conn.cursor()
         cur.execute("INSERT INTO public.todo (title, status) VALUES ('{}', '{}')"
             .format(body['title'], body['status']))
+        conn.commit()
+        cur.close()
+        conn.close()
+        resp.status = falcon.HTTP_200
+
+    def on_put(self, req, resp, id):
+        print("On Put %s",id)
+        body = json.loads(req.req_body)
+        print(body)
+        conn = psycopg2.connect(host=os.environ["DB_HOST"],
+                                dbname=os.environ["DB_NAME"],
+                                user=os.environ["DB_USER"],
+                                password=os.environ["DB_PASSWORD"])
+        cur = conn.cursor()
+        cur.execute("UPDATE public.todo SET title='{}', status='{}' WHERE id='{}'"
+            .format(body['title'], body['status'], id))
         conn.commit()
         cur.close()
         conn.close()

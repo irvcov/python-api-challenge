@@ -21,3 +21,22 @@ If you are not familiar with those tools, feel free to setup whatever environmen
 - DB_NAME
 
 Also, regardless of which environment you use, you'll need to install dependencies. For this repo, we are using [pip](https://pypi.org/project/pip/).
+
+
+For this project you can Install Dockers in order to run it propertly
+https://docs.docker.com/compose/install/#install-compose
+
+Docker Example
+https://docs.docker.com/compose/gettingstarted/#step-5-edit-the-compose-file-to-add-a-bind-mount
+
+Also if you want to run this app you should follow the next steps:
+
+1- Install Docker
+2- Run Docker deamon
+3- cd to your directory where you clone this repo
+4- Inside the root of the repo run:  `docker-compose up`
+5- If you want to update the code and the docker componente `docker-compose build`
+
+
+
+

@@ -62,7 +62,7 @@ class TodosHandler(object):
                 .format(body['title'], body['status'], id, body['title']))
             conn.commit()
             statusResp = falcon.HTTP_200
-            response['title'] = body['title']
+            response['status'] = body['status']
 
         cur.close()
         conn.close()

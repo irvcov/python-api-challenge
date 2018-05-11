@@ -8,3 +8,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 CMD [ "uwsgi", "uwsgi.ini", "--py-auto-reload", "1", "--worker-reload-mercy", "5" ]
+
+#CMD ["python", "api/unitTest.py"]

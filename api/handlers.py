@@ -29,9 +29,7 @@ class TodosHandler(object):
         resp.status = falcon.HTTP_200
 
     def on_post(self, req, resp):
-        print("On Post")
         body = json.loads(req.req_body)
-        print(body)
         conn = psycopg2.connect(host=os.environ["DB_HOST"],
                                 dbname=os.environ["DB_NAME"],
                                 user=os.environ["DB_USER"],
@@ -45,9 +43,7 @@ class TodosHandler(object):
         resp.status = falcon.HTTP_200
 
     def on_put(self, req, resp, id):
-        print("On Put %s",id)
         body = json.loads(req.req_body)
-        print(body)
         conn = psycopg2.connect(host=os.environ["DB_HOST"],
                                 dbname=os.environ["DB_NAME"],
                                 user=os.environ["DB_USER"],

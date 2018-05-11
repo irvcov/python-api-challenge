@@ -49,9 +49,22 @@ class TodosHandler(object):
                                 user=os.environ["DB_USER"],
                                 password=os.environ["DB_PASSWORD"])
         cur = conn.cursor()
-        cur.execute("UPDATE public.todo SET title='{}', status='{}' WHERE id='{}'"
-            .format(body['title'], body['status'], id))
-        conn.commit()
+
+        cur.execute("SELECT * FROM public.todo WHERE id='{}' AND title='{}'".format(id, body['title']))
+        todo = cur.fetchall()
+        print(todo)
+        response = dict();
+
+        if(len(todo) < 1):
+            statusResp = falcon.HTTP_204
+        else:
+            cur.execute("UPDATE public.todo SET title='{}', status='{}' WHERE id='{}' AND title='{}'"
+                .format(body['title'], body['status'], id, body['title']))
+            conn.commit()
+            statusResp = falcon.HTTP_200
+            response['title'] = body['title']
+
         cur.close()
         conn.close()
-        resp.status = falcon.HTTP_200
+        resp.body = json.dumps(response)
+        resp.status = statusResp

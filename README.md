@@ -31,10 +31,12 @@ https://docs.docker.com/compose/gettingstarted/#step-5-edit-the-compose-file-to-
 
 Also if you want to run this app you should follow the next steps:
 
-1-Install Docker
-2-Run Docker deamon
-3-cd to your directory where you clone this repo
-4-Inside the root of the repo run:  `docker-compose up`
-5-If you want to update the code and the docker componente `docker-compose build`
+1- Install Docker
+2- Run Docker deamon
+3- cd to your directory where you clone this repo
+4- Inside the root of the repo run:  `docker-compose up`
+5- If you want to update the code and the docker componente `docker-compose build`
+
+
 
 
